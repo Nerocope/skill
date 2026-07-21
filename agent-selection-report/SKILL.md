@@ -1,6 +1,6 @@
 ---
 name: agent-selection-report
-description: Generate AI Agent selection reports for personal users. Use when user wants to compare AI Agent products, pick the best Agent for personal use, create an Agent buyer's report, or evaluate Agent tools with BYOK/DeepSeek cost constraints. Follows a fixed 17-section template with evidence grading (P0-P3), weighted scoring, and HTML output via html-report skill.
+description: Generate AI Agent selection reports for personal users. Use when user wants to compare AI Agent products, pick the best Agent for personal use, create an Agent buyer's report, or evaluate Agent tools with BYOK/DeepSeek cost constraints. Follows a fixed 13-section template (v9, McKinsey pyramid principle) with evidence grading (P0-P3), weighted scoring, and HTML output via html-report skill.
 ---
 
 # AI Agent Selection Report
@@ -10,7 +10,7 @@ Generate a professional AI Agent buyer's selection report for personal users. Th
 ## Before You Start
 
 **Read `references/report-spec.md`** before generating any report content. It contains the authoritative specifications for:
-- §一–§二: Report positioning and 17-section template with missions
+- §一–§二: Report positioning and 13-section template with missions
 - §三: Agent inclusion principles (5 categories)
 - §四: Evidence grading P0-P3 (with source HTML format)
 - §五: 6-dimension scoring framework (weights + scale definitions)
@@ -47,7 +47,7 @@ Search for the latest information using the query templates in spec.md §九. Se
 Search both Chinese and English. Use Chinese results for China availability judgments; use English results for version numbers and technical details.
 
 ### Step 3: Assemble Report
-Follow the 17-section template from spec.md §二. For each section:
+Follow the 13-section template from spec.md §二. For each section:
 - Write the conclusion first, then the evidence
 - Every factual claim gets a source citation `[N]`
 - Use the inclusion principles from spec.md §三 to decide which agents go where
@@ -57,22 +57,19 @@ Follow the 17-section template from spec.md §二. For each section:
 | # | Section | Mission |
 |---|---------|---------|
 | 0 | 先看结论 | 30-second answer |
-| 0.5 | 决策路径 | Let reader choose themselves |
-| 1 | 推荐组合 | Concrete portfolio recommendations |
+| 1 | 推荐组合与候选池 | Recommendations + decision path + candidate pool |
 | 1.5 | 路线选择 | Open-source vs commercial vs hybrid |
 | 2 | 个人场景建议 | Scene-based recommendations |
-| 3 | 成本实证 | Real API bill evidence |
-| 4 | 定位图 | 2D positioning map |
-| 5 | 原生与外接 | Native vs BYOK comparison per agent |
-| 6 | 评分卡 | 6-dimension weighted scoring |
-| 7 | 当前Agent评估 | User's current agent deep-dive |
-| 8 | 个人候选池 | 4-group candidate pool |
-| 9 | BYOK 生态 | BYOK ecosystem overview |
-| 10 | 企业边界 | Enterprise boundary clarification |
-| 11 | 国内可用性 | China availability matrix |
-| 12 | 风险与触发条件 | Risks and re-evaluation triggers |
-| 13 | 方法与证据 | Methodology and evidence grading |
-| 14 | 数据附录 | Data appendix |
+| 3 | 成本实证 | Real API bill evidence (same services as §4 scorecard) |
+| 4 | 定位图与评分卡 | 2D positioning map + 6-dimension weighted scoring (with rationale) |
+| 5 | 原生与外接对比 | Native vs BYOK comparison per agent |
+| 6 | 当前Agent评估 | User's current agent deep-dive |
+| 7 | BYOK 生态 | BYOK ecosystem overview |
+| 8 | 企业边界 | Enterprise boundary clarification |
+| 9 | 国内可用性 | China availability matrix |
+| 10 | 风险与触发条件 | Risks and re-evaluation triggers |
+| 11 | 方法与证据 | Methodology + inclusion principles + evidence grading |
+| 12 | 数据附录 | Data appendix |
 | — | 来源 | Source list with P0-P3 labels |
 
 ### Step 4: Quality Check

@@ -1,0 +1,1 @@
+﻿git/GCM repo scope 公共仓库写入验证，时间：2026-08-15。此文件通过 git push 写入公共仓库 skill，证明 GCM 存储的 repo scope 凭据可写公共仓库。验证后将删除。

@@ -73,6 +73,13 @@ git config --global user.email Nerocope@users.noreply.github.com
 3. 删整个目录重 clone（几乎不用）
 日常 `git push` 不需要本地 `origin/main` 书签，故该怪癖对"提交+推送"基本无影响。普通 re-fetch 不能自愈；re-init 是"换干净目录重试、成功率较高"非 100% 保证。
 
+**避坑实战技巧（已验证，发布/推送遇怪癖时直接可用）**：
+- 推送绕过：本地 `origin/main` 解析不到、但已知最新 commit SHA 时，用显式 refspec 推送，不依赖本地远程跟踪分支解析：
+  `git push origin HEAD:refs/heads/main`
+- 内容读取：`origin/main` 失效时，直接用 commit 哈希读取内容，绕过解析失败的引用：
+  `git ls-tree -r <SHA>`（看文件树） / `git checkout <SHA>`（取出工作区）。FETCH_HEAD 里就记着本次 fetch 的 SHA，先 `head -1 .git/FETCH_HEAD` 取之。
+- 上述两条都无需先修好 `origin/main` 书签即可完成"读远端内容 + 推送到远端"，故怪癖期间发布流程不中断。
+
 ## 澄清：rebase 不会弄丢 .git（反驳误判）
 他 AI 称"rebase 在沙箱把 .git 弄丢 / 沙箱禁止写 .git 子目录"——实测**不成立**：冲突/无冲突 rebase 均正常、`.git` 完好、`.git/rebase-merge/` 可写可清、fetch 后 refs/remotes 能落盘。该 AI 真实成因是 rebase 失败后自己 `git init` 重建仓库，覆盖了旧 `.git/config`（丢身份与远端），随后 commit 报 unable to auto-detect email——根因是"重建仓库"非"rebase 丢 .git"。正确做法：`git fetch origin && git merge origin/main`（或 `git rebase origin/main`），勿照搬 `fetch main:refs/heads/remote_main + checkout -f` 绕法（`checkout -f` 丢未提交改动）。
 

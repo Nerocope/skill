@@ -1,6 +1,6 @@
-# TRAE Skills
+# AI Agent Skills
 
-个人 TRAE 技能仓库，存放可复用的 AI Agent 技能文件。
+个人 AI Agent 技能仓库，存放可复用的 Agent 技能文件（TRAE / WorkBuddy 等）。
 
 ## 技能列表
 
@@ -10,16 +10,9 @@
 
 **核心约束**：以用户指定的外接模型（如 DeepSeek API）为主线，评估 BYOK 兼容性和成本效率。
 
-**v2.0 更新**：
-- 17 节 → 13 节，合并 4 对冗余章节
-- 定位图 + 评分卡合并为同屏量化评估
-- 推荐组合 + 候选池合并，决策路径融入
-- 收录原则并入方法论，prescriptive/analytical 分离
-- 定位图与评分卡覆盖一致（13 个候选含 HanaAgent）
-
 **文件结构**：
 ```
-agent-selection-report/
+skills/agent-selection-report/
 ├── SKILL.md                    # 技能主指令（工作流、章节速查表、核心规则）
 └── references/
     └── report-spec.md          # 权威规范（报告结构、评分框架、设计系统、质量清单）
@@ -27,17 +20,32 @@ agent-selection-report/
 
 **使用方式**：在 TRAE 对话中直接说"生成一份 AI Agent 选型报告"或"帮我对比 Agent 产品"。
 
+### git-windows-schannel-fix
+
+Windows / PortableGit 环境下向 GitHub 推送的排错与正确流程。覆盖：TLS schannel 吊销报错修复、凭据助手选 wincred（禁用 manager/GCM）、全局提交身份、fetch 后远程跟踪分支偶发不落盘的怪癖与最轻修法、多 git 共存不误伤、rebase/merge/fetch 在沙箱正常的澄清。
+
+**适用**：WorkBuddy 内置 PortableGit 或自装 git（如 `C:\wnm\software\git`）直连 GitHub（HTTPS）。
+
+**文件结构**：
+```
+skills/git-windows-schannel-fix/
+└── SKILL.md                    # 排错流程 + 正常上传命令流 + 禁忌
+```
+
 ## 目录结构
 
 ```
 skill/
 ├── README.md
-└── agent-selection-report/
-    ├── SKILL.md
-    └── references/
-        └── report-spec.md
+└── skills/
+    ├── agent-selection-report/
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── report-spec.md
+    └── git-windows-schannel-fix/
+        └── SKILL.md
 ```
 
 ## 安装
 
-将需要使用的技能文件夹复制到 TRAE 工作区的 `.trae/skills/` 目录下即可。
+将需要使用的技能文件夹从 `skills/` 下复制到对应 Agent 工作区的技能目录（如 TRAE 的 `.trae/skills/` 或 WorkBuddy 的 `.workbuddy/skills/`）即可。
